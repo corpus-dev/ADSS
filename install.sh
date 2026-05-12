@@ -82,6 +82,7 @@ if [ -r /etc/os-release ]; then
       sudo chown "$(whoami)" "$WORKING_DIR"
       echo -e "${GREEN}$(trans "Клонуємо ADSS...")${NC}"
       git clone https://github.com/corpus-dev/ADSS.git "$WORKING_DIR"
+      cd "$WORKING_DIR" && git checkout main
 
       # Apply v1.0.0 baseline configuration
       envFile="$WORKING_DIR/services/EnvironmentFile"

@@ -79,7 +79,7 @@ elif [ "$1" = "--restore" ]; then
   sudo rm -rf /tmp/distress >/dev/null 2>&1
   sudo rm -r /var/log/adss.log >/dev/null 2>&1
   sudo rm -rf "${SCRIPT_DIR}"
-  curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/install/install.sh | bash -s
+  curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/main/install.sh | bash -s
 elif [ "$1" = "config" ]; then
   clear
   cat "${SCRIPT_DIR}"/services/EnvironmentFile && echo ""

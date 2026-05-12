@@ -13,7 +13,7 @@ Ubuntu, Debian, Fedora, Centos, Arch Linux, Kali Linux, Parrot Security OS, Rock
 Use this command for installation :
 
 ```
-curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/install/install.sh  | bash -s
+curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/main/install.sh | bash -s
 ```
 
 During the installation, the script automatically installs the necessary packages :
