@@ -4,12 +4,6 @@ export GREEN='\033[0;32m'
 export RED='\033[0;31m'
 export NC='\033[0m'
 
-source "$(dirname "${BASH_SOURCE[0]}")/utils/translate.sh"
-localization_file=$(apply_localization "$@")
-if [[ -n "$localization_file" ]]; then
-  source "$localization_file"
-fi
-
 WORKING_DIR="/opt/itarmy"
 
 if [ -r /etc/os-release ]; then
