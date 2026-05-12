@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 
-export SCRIPT_DIR="$(
-  cd "$(
-    dirname "$(
-      (readlink "${BASH_SOURCE[0]}" || echo "${BASH_SOURCE[0]}")
-        sed -e "s#^../#$(dirname "$(dirname "${BASH_SOURCE[0]}")")/#"
-    )"
-  )/.." >/dev/null &&
-    pwd
-)"
+export SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../" && pwd)"
 OSARCH=$(uname -m)
 source "$SCRIPT_DIR/utils/translate.sh"
 
@@ -37,7 +29,7 @@ source_files_in_directory() {
       fi
     done
   else
-    echo -e "${RED}$(trans "Не знайдено папку '$directory'.")${NC}"
+    echo -e "${RED}Не знайдено папку '$directory'.${NC}"
   fi
 }
 source_files_in_directory "$SCRIPT_DIR/utils"
@@ -93,10 +85,9 @@ elif [ "$1" = "--uninstall" ]; then
   sudo rm -r /usr/local/bin/adss >/dev/null 2>&1
   sudo rm -r /var/log/adss.log >/dev/null 2>&1
   sudo rm -rf "${SCRIPT_DIR}"
-  echo -e "${GREEN}$(trans "ADSS успішно видалено")${NC}"
+  echo -e "${GREEN}ADSS успішно видалено${NC}"
 else
   check_updates
   apply_patch
-  source ~/.bashrc
   main_menu
 fi
