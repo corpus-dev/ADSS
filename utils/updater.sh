@@ -16,7 +16,6 @@ check_updates() {
 prepare_for_update() {
   echo -e "${GREEN}$(trans "Перевіряємо наявність оновлень")${NC}"
   remote_version=$(curl -s 'https://raw.githubusercontent.com/corpus-dev/ADSS/main/version.txt')
-  remote_install=$(curl -s 'https://raw.githubusercontent.com/corpus-dev/ADSS/install/install.sh')
 
   echo -e "$(trans "Актуальна версія") = ${ORANGE}$remote_version${NC}"
 
@@ -33,6 +32,7 @@ write_version() {
 }
 
 update_adss() {
+  source "${SCRIPT_DIR}/utils/definitions.sh"
   echo -e "${GREEN}$(trans "Оновляємо ADSS")${NC}"
   cd $SCRIPT_DIR &&
     git pull --all || adss --restore
