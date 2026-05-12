@@ -150,6 +150,7 @@ if [ -r /etc/os-release ]; then
         sed -i 's/\[\/x100\]/cron-to-stop=\n\[\/x100\]/g' "$envFile"
       fi
 
+      sudo chmod +x "$WORKING_DIR/bin/adss"
       sudo ln -sf "$WORKING_DIR/bin/adss" /usr/local/bin/adss
       echo -e "${GREEN}$(trans "ADSS встановлено! Запустіть команду 'adss' для початку.")${NC}"
     fi

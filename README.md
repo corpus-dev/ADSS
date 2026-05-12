@@ -13,7 +13,7 @@ Ubuntu, Debian, Fedora, Centos, Arch Linux, Kali Linux, Parrot Security OS, Rock
 Використовуйте цю команду для встановлення :
 
 ```
-curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/main/install.sh | bash -s
+curl -sL https://raw.githubusercontent.com/corpus-dev/ADSS/main/install.sh | sudo bash -s
 ```
 
 Під час встановлення скрипт автоматично встановлює потрібні пакети:
