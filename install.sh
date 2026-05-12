@@ -41,32 +41,32 @@ if [ -r /etc/os-release ]; then
 
     if [[ "$PACKAGE_MANAGER" == "pacman" ]]; then
       for i in "${!TOOLS[@]}"; do
-        echo -e "${GREEN}$(trans "Встановлюємо") ${TOOLS[$i]}${NC}"
+        echo -e "${GREEN}Встановлюємо ${TOOLS[$i]}${NC}"
         sudo "$PACKAGE_MANAGER" -Sy "${TOOLS[$i]}" --noconfirm
       done
     elif [[ "$PACKAGE_MANAGER" == "xbps-install" ]]; then
       sudo "$PACKAGE_MANAGER" -u xbps -y
       sudo "$PACKAGE_MANAGER" -Su libssh2 -y
       for i in "${!TOOLS[@]}"; do
-        echo -e "${GREEN}$(trans "Встановлюємо") ${TOOLS[$i]}${NC}"
+        echo -e "${GREEN}Встановлюємо ${TOOLS[$i]}${NC}"
         sudo "$PACKAGE_MANAGER" -Su "${TOOLS[$i]}" -y
       done
     elif [[ "$PACKAGE_MANAGER" == "emerge" ]]; then
       sudo "$PACKAGE_MANAGER" -vuDN @world
       for i in "${!GENTOO_TOOLS[@]}"; do
-        echo -e "${GREEN}$(trans "Встановлюємо") ${GENTOO_TOOLS[$i]}${NC}"
+        echo -e "${GREEN}Встановлюємо ${GENTOO_TOOLS[$i]}${NC}"
         sudo "$PACKAGE_MANAGER" -n "${GENTOO_TOOLS[$i]}"
       done
     else
       sudo "$PACKAGE_MANAGER" update -y
       for i in "${!TOOLS[@]}"; do
-        echo -e "${GREEN}$(trans "Встановлюємо") ${TOOLS[$i]}${NC}"
+        echo -e "${GREEN}Встановлюємо ${TOOLS[$i]}${NC}"
         sudo "$PACKAGE_MANAGER" install -y "${TOOLS[$i]}"
       done
     fi
 
     if [[ -d "$WORKING_DIR" ]] && [[ "$(ls -A "$WORKING_DIR")" ]]; then
-      echo -e "${GREEN}$(trans "ADSS вже встановлено. Запускаємо оновлення...")${NC}"
+      echo -e "${GREEN}ADSS вже встановлено. Запускаємо оновлення...${NC}"
       source "${WORKING_DIR}/utils/updater.sh"
       source "${WORKING_DIR}/utils/translate.sh"
       export SCRIPT_DIR="${WORKING_DIR}/"
@@ -74,7 +74,7 @@ if [ -r /etc/os-release ]; then
     else
       sudo mkdir -p "$WORKING_DIR"
       sudo chown "$(whoami)" "$WORKING_DIR"
-      echo -e "${GREEN}$(trans "Клонуємо ADSS...")${NC}"
+      echo -e "${GREEN}Клонуємо ADSS...${NC}"
       git clone https://github.com/corpus-dev/ADSS.git "$WORKING_DIR"
       cd "$WORKING_DIR" && git checkout main
 
@@ -152,11 +152,11 @@ if [ -r /etc/os-release ]; then
 
       sudo chmod +x "$WORKING_DIR/bin/adss"
       sudo ln -sf "$WORKING_DIR/bin/adss" /usr/local/bin/adss
-      echo -e "${GREEN}$(trans "ADSS встановлено! Запустіть команду 'adss' для початку.")${NC}"
+      echo -e "${GREEN}ADSS встановлено! Запустіть команду 'adss' для початку.${NC}"
     fi
   else
-    echo -e "${RED}$(trans "Менеджер пакетів не знайдено")${NC}"
+    echo -e "${RED}Менеджер пакетів не знайдено${NC}"
   fi
 else
-  echo -e "${RED}$(trans "Неможливо визначити операційну систему")${NC}"
+  echo -e "${RED}Неможливо визначити операційну систему${NC}"
 fi
